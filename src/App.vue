@@ -24,4 +24,8 @@ export default {
 <style lang="scss">
 @import './scss/main.scss';
 
+*{ 
+  background: black;
+  color: white;
+}
 </style>

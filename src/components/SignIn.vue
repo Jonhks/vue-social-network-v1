@@ -6,8 +6,14 @@
             <b-form >
              <b-form-group>
                <label for="inputUser" >User: </label>
-               <b-form-input v-model="user" id="inputUser" type="text" 
+               <b-form-input id="inputUser" type="text" 
                required placeholder="Ingresa tu usuario ">
+               </b-form-input>
+             </b-form-group>
+               <b-form-group>
+               <label for="inputEmail" >Email: </label>
+               <b-form-input v-model="user" id="inputEmail" type="text" 
+               required placeholder="Ingresa tu correo ">
                </b-form-input>
              </b-form-group>
              <b-form-group>
@@ -23,11 +29,9 @@
     <b-row align-h="center">
       <b-col cols="8">
         <b-col align-h="center">
-        <b-button size="md" variant="info" @click="login" > Acceder </b-button>
-        <b-button size="md" variant="success"> Google </b-button>
-        <b-button size="md" variant="primary"> Facebook </b-button>
-          <router-link tag="span" to="/singin"> 
-           ¿No tienes cuenta?  <a> Crea una cuenta! </a>
+        <b-button size="lg" variant="info" @click="signIn" > Crear </b-button>
+          <router-link tag="span" to="/login"> 
+          ¿ Ya tienes cuenta?  <a> Ingresa! </a>
           </router-link>
           <router-view></router-view>
         </b-col>
@@ -42,7 +46,6 @@
     margin-top: 10%
 </style>
 
-
 <script>
 import firebase from 'firebase'
 
@@ -54,12 +57,13 @@ export default {
     }
   }, 
   methods: {
-    login() {
-      firebase.auth().signInWithEmailAndPassword(this.user, this.password)
+    signIn () {
+      firebase.auth().createUserWithEmailAndPassword(this.user, this.password)
       .then(user => {
-        this.$router.replace('home'), (error) => console.log(error)
-       })
-    } 
+        this.$router.replace('home'),
+        (error) => alert(error)
+      })
+   }
   }
 }
 </script>
