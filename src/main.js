@@ -5,6 +5,7 @@ import vueRouter from 'vue-router'
 import routes from './router/routes.js'
 import firebase from 'firebase'
 
+
   // Initialize Firebase
 
 const config = {
@@ -24,9 +25,9 @@ firebase.auth().onAuthStateChanged(user => {
     router
   })
 })
-
 Vue.use(BoostrapVue)
 Vue.use(vueRouter)
+
 
 const router = new vueRouter ({
   routes,
@@ -37,7 +38,7 @@ const router = new vueRouter ({
 router.beforeEach((to, from, next) =>{
   let user = firebase.auth().currentUser;
   let autorizacion = to.matched.some(record => record.meta.autentication);
-  console.log(user)
+  // console.log(user, '=main.js')
   if(autorizacion && !user) {
     next('login')
   }else if(!autorizacion && user) {
@@ -46,6 +47,8 @@ router.beforeEach((to, from, next) =>{
     next()
   }
 })
+export const bus = new Vue() 
+
 
 
 
