@@ -29,7 +29,7 @@
     <b-row align-h="center">
       <b-col cols="8">
         <b-col align-h="center">
-        <b-button size="lg" variant="info" @click="signIn" > Crear </b-button>
+        <b-button size="md" variant="info" @click="signIn" > Crear </b-button>
           <router-link tag="span" to="/login"> 
           ¿ Ya tienes cuenta?  <a> Ingresa! </a>
           </router-link>

@@ -7,6 +7,7 @@
 
     <!-- Right aligned nav items -->
     <b-navbar-nav class="ml-auto">
+      <b-nav-item href="#"> user </b-nav-item>
       <b-nav-item href="#">Profile</b-nav-item>
       <b-nav-item @click="logOut" href="#">Signout</b-nav-item>
     </b-navbar-nav>
@@ -20,7 +21,6 @@ import firebase from 'firebase'
 export default {
   methods: {
     logOut () {
-      confirm('¿Seguro que quieres salir?')
       firebase.auth().signOut().then(() => this.$router.replace('login'))
     }
   }
