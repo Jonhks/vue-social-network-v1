@@ -17,6 +17,7 @@ const config = {
   messagingSenderId: "661090504725"
 };
 firebase.initializeApp(config);
+const db = firebase.firestore();
 
 firebase.auth().onAuthStateChanged(user => {
   new Vue({

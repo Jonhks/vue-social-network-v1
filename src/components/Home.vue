@@ -2,7 +2,7 @@
 <b-container class="mensajes">
   <b-row align-h="center">
      <div class="container">
-       <b-form-textarea id="textarea1" v-model="text" placeholder="Ingresa tu mensaje" :rows="3" :max-rows="6">
+       <b-form-textarea id="textarea1" v-model="text" placeholder="Ingresa tu mensaje" :rows="1" :max-rows="6">
       </b-form-textarea>
      </div>
   </b-row>
