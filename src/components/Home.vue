@@ -13,7 +13,7 @@
 
 <script>
 import { db } from "../main.js";
-import firebase from 'firebase'
+import firebase from "firebase";
 export default {
   data() {
     return {
@@ -22,22 +22,29 @@ export default {
   },
   methods: {
     enviarDb() {
-      console.log(this.text)
       const firestore = firebase.firestore();
-      let date = new Date()
+      let date = new Date();
       db.collection("mensajes")
         .add({
-          user: "jonh",
+          nameUser: "Javis",
           last: "Lovelace",
           mensaje: this.text,
           date: date
         })
         .then(function(docRef) {
-          console.log("Document written with ID: ", docRef.id);
+          console.log("Este es el ID del documento del mensaje: ", docRef.id);
+          db.collection("mensajes")
+            .get()
+            .then(querySnapshot => {
+              querySnapshot.forEach(doc => {
+                console.log(`${doc.id} => ${doc.data().mensaje}, ${doc.data().date}`);
+              });
+            });
         })
         .catch(function(error) {
           console.error("Error adding document: ", error);
         });
+        this.text= ''
     }
   }
 };
@@ -53,8 +60,3 @@ button:hover
 </style>
 
 
-// db.collection("mensajes").get().then((querySnapshot) => {
-//     querySnapshot.forEach((doc) => {
-//         console.log(`${doc.id} => ${doc.data()}`);
-//     });
-// });
